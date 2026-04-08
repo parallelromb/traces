@@ -1,0 +1,13 @@
+dashboard/node_modules/
+dashboard/.next/
+dashboard/src/
+sdk/node_modules/
+sdk/src/
+examples/
+drizzle/
+*.ts
+!dist/**/*.d.ts
+tsconfig.json
+drizzle.config.ts
+.git/
+.gitignore
