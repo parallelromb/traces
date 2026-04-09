@@ -1,6 +1,6 @@
 // Example: Express app with Traces middleware-style integration
 import express from 'express';
-import { Traces } from '@traces/sdk';
+import { Traces } from 'traces-sdk';
 import OpenAI from 'openai';
 
 const app = express();

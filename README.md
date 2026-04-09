@@ -40,13 +40,13 @@ The server auto-creates tables on first boot, generates API keys, and starts the
 ### 2. Install the SDK
 
 ```bash
-npm install @traces/sdk
+npm install traces-sdk
 ```
 
 ### 3. Instrument your code
 
 ```typescript
-import { Traces } from '@traces/sdk';
+import { Traces } from 'traces-sdk';
 import OpenAI from 'openai';
 
 const traces = new Traces({
@@ -100,7 +100,7 @@ That's it. Open `http://localhost:3100` to see your traces.
 ### Auto-instrument (recommended)
 
 ```typescript
-import { Traces } from '@traces/sdk';
+import { Traces } from 'traces-sdk';
 
 const traces = new Traces({ secretKey: 'sk-trc-...' });
 

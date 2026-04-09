@@ -1,5 +1,5 @@
 {
-  "name": "@traces/sdk",
+  "name": "traces-sdk",
   "version": "0.1.0",
   "description": "TypeScript SDK for Traces — LLM observability",
   "license": "MIT",

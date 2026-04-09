@@ -1,5 +1,5 @@
 // Example: Auto-instrument OpenAI with Traces
-import { Traces } from '@traces/sdk';
+import { Traces } from 'traces-sdk';
 import OpenAI from 'openai';
 
 const traces = new Traces({

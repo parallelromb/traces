@@ -1,5 +1,5 @@
 // Example: Manual spans with Anthropic
-import { Traces } from '@traces/sdk';
+import { Traces } from 'traces-sdk';
 import Anthropic from '@anthropic-ai/sdk';
 
 const traces = new Traces({

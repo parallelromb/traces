@@ -1,5 +1,5 @@
 // Example: Trace local Ollama models — tok/s metrics
-import { Traces } from '@traces/sdk';
+import { Traces } from 'traces-sdk';
 
 const traces = new Traces({
   secretKey: process.env.TRACES_SECRET_KEY ?? 'sk-trc-...',
