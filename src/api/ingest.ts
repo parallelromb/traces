@@ -4,6 +4,13 @@ import { traces, spans } from '../db/schema.js';
 import { authenticate } from './auth.js';
 import { calculateCost, getProvider } from '../pricing/models.js';
 
+function toDate(v: any): Date | null {
+  if (!v) return null;
+  if (v instanceof Date) return v;
+  const d = new Date(v);
+  return isNaN(d.getTime()) ? null : d;
+}
+
 export async function ingestRoutes(app: FastifyInstance) {
   // ── POST /api/traces ─────────────────────────────────
   app.post('/api/traces', async (req, reply) => {
@@ -81,8 +88,8 @@ export async function ingestRoutes(app: FastifyInstance) {
         status: item.status ?? 'ok',
         error: item.error ?? null,
         metadata: item.metadata ?? null,
-        startedAt: item.startedAt ?? item.started_at ?? null,
-        endedAt: item.endedAt ?? item.ended_at ?? null,
+        startedAt: toDate(item.startedAt ?? item.started_at),
+        endedAt: toDate(item.endedAt ?? item.ended_at),
         ...(item.id ? { id: item.id } : {}),
       }).returning();
       results.push(row);

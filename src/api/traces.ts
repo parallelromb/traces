@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import { db } from '../db/index.js';
 import { traces, spans } from '../db/schema.js';
-import { eq, sql, count } from 'drizzle-orm';
+import { eq, and, sql, count } from 'drizzle-orm';
 import { authenticate } from './auth.js';
 
 export async function traceRoutes(app: FastifyInstance) {
@@ -13,13 +13,6 @@ export async function traceRoutes(app: FastifyInstance) {
     const query = req.query as Record<string, string>;
     const limit = Math.min(parseInt(query.limit ?? '50'), 200);
     const offset = parseInt(query.offset ?? '0');
-
-    const conditions = [eq(traces.projectId, auth.projectId)];
-    if (query.name) conditions.push(like(traces.name, `%${query.name}%`));
-    if (query.userId) conditions.push(eq(traces.userId, query.userId));
-    if (query.sessionId) conditions.push(eq(traces.sessionId, query.sessionId));
-    if (query.from) conditions.push(gte(traces.createdAt, new Date(query.from)));
-    if (query.to) conditions.push(lte(traces.createdAt, new Date(query.to)));
 
     const rows = await db.execute(sql`
       SELECT
