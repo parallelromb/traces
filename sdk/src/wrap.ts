@@ -35,7 +35,7 @@ export function wrapClient<T extends object>(
               name: opts?.traceName ?? 'auto',
               userId: opts?.userId,
               sessionId: opts?.sessionId,
-            });
+            }) as { id: string };
             traceId = trace.id;
           }
 
@@ -50,7 +50,7 @@ export function wrapClient<T extends object>(
             const model = result?.model ?? params.model ?? 'unknown';
 
             tracesClient.enqueueSpan({
-              traceId,
+              traceId: traceId!,
               name: `${prop}`,
               model,
               input: { messages: params.messages },
@@ -72,7 +72,7 @@ export function wrapClient<T extends object>(
             const latencyMs = Date.now() - startTime;
 
             tracesClient.enqueueSpan({
-              traceId,
+              traceId: traceId!,
               name: `${prop}`,
               model: params.model ?? 'unknown',
               input: { messages: params.messages },

@@ -12,7 +12,7 @@ export type SpanOptions = {
 
 export class SpanBuilder {
   private client: TracesClient;
-  private data: Record<string, any>;
+  private data: { traceId: string; [key: string]: any };
   private startTime: number;
 
   constructor(client: TracesClient, opts: SpanOptions) {

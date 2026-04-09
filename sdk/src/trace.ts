@@ -22,7 +22,7 @@ export class TraceBuilder {
   }
 
   static async create(client: TracesClient, opts: TraceOptions): Promise<TraceBuilder> {
-    const result = await client.createTrace(opts);
+    const result = await client.createTrace(opts) as { id: string };
     return new TraceBuilder(client, opts, result.id);
   }
 

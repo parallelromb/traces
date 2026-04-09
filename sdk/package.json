@@ -1,6 +1,6 @@
 {
   "name": "traces-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TypeScript SDK for Traces — LLM observability",
   "license": "MIT",
   "type": "module",
